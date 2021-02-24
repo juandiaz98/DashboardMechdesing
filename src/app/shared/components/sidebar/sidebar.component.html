@@ -1,0 +1,13 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>Usuario</h2>
+            <h3>ejemplo@email.com</h3>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <h2 matSubheader>paginas</h2>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/" (click)="ToogleSideBar()">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/post" (click)="ToogleSideBar()">Post</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/sensores" (click)="ToogleSideBar()">Sensores</a>
+</mat-nav-list>
