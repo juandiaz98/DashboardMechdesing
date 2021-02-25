@@ -1,5 +1,11 @@
-<app-solidgauge></app-solidgauge>
-<mat-divider></mat-divider>
-<mat-card style="width: 280px;">
-    <app-gauge></app-gauge>
-</mat-card>
+<div fxLayout="row" fxLayoutAlign="space-evenly center" style="background-color:darkseagreen; width: 100%; height: 300px;">
+    <mat-card  fxFlex="32">
+        <app-solidgauge [valor]="pot_sensada" [Ymax]="YmaxPotencia" nombre="Potencia" unidades="kw"></app-solidgauge>
+    </mat-card>
+    <mat-card  fxFlex="30">
+        <app-gauge [velocidad]="vel_sensada"></app-gauge>
+    </mat-card>
+    <mat-card  fxFlex="32">
+        <app-solidgauge [valor]="RPM_sensada" [Ymax]="YmaxRPM" nombre="RPM" unidades="*1000/min"></app-solidgauge>
+    </mat-card>
+</div>

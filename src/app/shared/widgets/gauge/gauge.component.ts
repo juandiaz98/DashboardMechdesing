@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_more from 'highcharts/highcharts-more'; // load highcharts-more
 
@@ -9,9 +9,20 @@ HC_more(Highcharts); // init highcharts-more
   templateUrl: './gauge.component.html',
   styleUrls: ['./gauge.component.scss']
 })
-export class GaugeComponent implements OnInit {
+export class GaugeComponent implements OnInit, OnChanges {
 
-  chartOptions ={};
+    @Input() set velocidad(_velocidad: Number){
+        if(this.chartOptions){
+            this.chartOptions.series[0].data[0] = _velocidad;
+            /**************************************************************** */
+            this.update = true;// REVISAR NO ESTA CAMBIANDO A FASLO ***************
+            //**************************************************************** */
+            console.log(_velocidad);
+        }
+    };
+
+  chartOptions:any;
+  update: boolean = false;
   Highcharts = Highcharts;
 
   constructor() { }
@@ -27,6 +38,8 @@ export class GaugeComponent implements OnInit {
     },
 
     title: null,
+
+    credits: null,
 
     pane: {
         startAngle: -150,
@@ -82,7 +95,8 @@ export class GaugeComponent implements OnInit {
             rotation: 'auto'
         },
         title: {
-            text: 'km/h'
+            text: 'km/h',
+            y: 10
         },
         plotBands: [{
             from: 0,
@@ -101,7 +115,10 @@ export class GaugeComponent implements OnInit {
 
     series: [{
         name: 'Speed',
-        data: [80],
+        data: [this.velocidad],
+        animation: {
+            duration: 0
+        },
         tooltip: {
             valueSuffix: ' km/h'
         }
@@ -109,5 +126,12 @@ export class GaugeComponent implements OnInit {
       //fin
     }
   }
-
+  //FIN NGINIT
+  ngOnChanges(changes: SimpleChanges){
+    /*  if(this.chartOptions){
+        this.chartOptions.series[0].data[0] = changes.velocidad.currentValue;
+        console.log(changes.velocidad.currentValue);
+    }
+    this.update = true;*/
+  }
 }

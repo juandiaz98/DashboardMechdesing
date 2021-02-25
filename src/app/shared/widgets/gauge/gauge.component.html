@@ -1,6 +1,8 @@
 <highcharts-chart 
-  [Highcharts]="Highcharts"
-  [options]="chartOptions"
+[Highcharts]="Highcharts"
+[options]="chartOptions"
+[(update)]="update"
 
-  style="width:100; height: 280px; display: block;"
+style="width:100; height: 250px; display: block;"
 ></highcharts-chart>
+{{update}}
