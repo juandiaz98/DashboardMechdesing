@@ -19,8 +19,8 @@ export class PostComponent implements OnInit {
     setInterval(() => {
       this.RPM_sensada = Math.random()*6;
       this.pot_sensada = Math.random()*600;
-      this.vel_sensada = Math.random()*200;
-    }, 1000);
+      this.vel_sensada = Math.round(Math.random()*200);
+    }, 500);
   }
 
 }

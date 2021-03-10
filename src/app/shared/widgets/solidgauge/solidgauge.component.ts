@@ -107,7 +107,7 @@ export class SolidgaugeComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges){
     if(this.solidGaugeOptions){
       this.solidGaugeOptions.series[0].data[0] = changes.valor.currentValue;
+      this.update = true;
     }
-    this.update = true;
   }
 }

@@ -13,12 +13,14 @@ export class GaugeComponent implements OnInit, OnChanges {
 
     @Input() set velocidad(_velocidad: Number){
         if(this.chartOptions){
-            this.chartOptions.series[0].data[0] = _velocidad;
             /**************************************************************** */
             this.update = true;// REVISAR NO ESTA CAMBIANDO A FASLO ***************
             //**************************************************************** */
-            console.log(_velocidad);
+            this.chartOptions.series[0].data[0] = _velocidad;
+            console.log(this.chartOptions.series[0].data)
+            //console.log(_velocidad);
         }
+        //this.update = false;
     };
 
   chartOptions:any;
@@ -37,9 +39,19 @@ export class GaugeComponent implements OnInit, OnChanges {
         plotShadow: false
     },
 
-    title: null,
+    title: {text: 'velocidad'},
 
-    credits: null,
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    credits: {
+        enabled: null
+    },
 
     pane: {
         startAngle: -150,
@@ -115,7 +127,7 @@ export class GaugeComponent implements OnInit, OnChanges {
 
     series: [{
         name: 'Speed',
-        data: [this.velocidad],
+        data: [0],
         animation: {
             duration: 0
         },
